@@ -14,13 +14,13 @@ unitClasses:
       - type.sea
     battleUnitCount: 1
     passiveMultiplier: 1.5
-    sightRange: 5
+    sightRange: 2
     isHiddenInCutsceneEditor: true
     isHidden: true
     isRecruitable: false
     canAttack: false
-    classIconSpritesheet: ui_ProjectGroove
     codexClass: warship
+    classIcon: unit_icons_warship
     appearsInLists: false
     inPalettes: false
 

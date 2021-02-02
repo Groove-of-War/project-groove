@@ -15,12 +15,12 @@ unitClasses:
       - type.sea
     battleUnitCount: 1
     passiveMultiplier: 1.5
-    sightRange: 6
+    sightRange: 3
     isHiddenInCutsceneEditor: true
     isHidden: true
     isRecruitable: false
     canAttack: false
-    classIconSpritesheet: ui_ProjectGroove
+    classIcon: unit_icons_harpoonship
     codexClass: harpoonship
     appearsInLists: false
     inPalettes: false
