@@ -1,0 +1,20 @@
+---
+
+weapons:
+  - id: turtleBite
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      air: 1
+      water: 1
+    tagDamage:
+
+      structure: 0.45
+      warship: 0.8
+      harpoonship: 0.2 # from 0.35
+      turtle: 0.5
+      merman: 1.1
+      travelboat: 0.55
+
+...

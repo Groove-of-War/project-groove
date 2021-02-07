@@ -14,6 +14,12 @@ local allowedTargets = {
   "drone",
 }
 
+local allowedCombats = {
+  "travelboat",
+  "harpoonship",
+  "warship",
+}
+
 function SwimUnder:getMaximumRange(unit, endPos)
   return 1
 end
@@ -29,6 +35,15 @@ function SwimUnder.canSwimUnder(unitClassId)
       end
    end
    return false
+end
+
+function SwimUnder.canCombat(unitClassId)
+  for i, target in pairs(allowedCombats) do
+    if target == unitClassId then
+      return true
+    end
+  end
+  return false
 end
 
 function SwimUnder:getPointBeyond(unit, targetPos)
@@ -74,12 +89,12 @@ function SwimUnder:execute(unit, targetPos, strParam, path)
   Wargroove.playMapSound("unitSplash", unit.pos)
 
   Wargroove.setVisibleOverride(unit.id, false)
-
   Wargroove.waitTime(0.5)
 end
 
 function SwimUnder:onPostUpdateUnit(unit, targetPos, strParam, path)
   Verb.onPostUpdateUnit(self, unit, targetPos, strParam, path)
+  local targetUnit = Wargroove.getUnitAt(targetPos)
 
   local facing
   if targetPos.x > unit.pos.x then
@@ -94,9 +109,13 @@ function SwimUnder:onPostUpdateUnit(unit, targetPos, strParam, path)
   Wargroove.updateUnit(unit)
   coroutine.yield()
   local splashFX = Wargroove.getSplashEffect()
-  Wargroove.setVisibleOverride(unit.id, true)
+  Wargroove.unsetVisibleOverride(unit.id)
   Wargroove.spawnMapAnimation(unit.pos, 1, splashFX, "idle", "behind_units", {x=12, y=8})
   Wargroove.playMapSound("unitSplash", unit.pos)
+  if SwimUnder.canCombat(targetUnit.unitClassId) then
+    Wargroove.startCombat(unit, targetUnit)
+    Wargroove.doPostCombat(unit.id, true)
+  end
 end
 
 return SwimUnder
