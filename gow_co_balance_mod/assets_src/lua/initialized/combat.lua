@@ -2,12 +2,21 @@ local OriginalCombat = require "wargroove/combat"
 
 local Combat = {}
 
-local randomDamageMin = 0.0
-local randomDamageMax = 0.1
+local randomDamageMin = 0.02
+local randomDamageMax = 0.08
 local randomDamagePercent = 0.1
 
 function Combat:init()
     OriginalCombat.solveDamage = Combat.solveDamage
+    Combat.originalGetDamage = OriginalCombat.getDamage
+    OriginalCombat.getDamage = Combat.getDamage
+end
+
+function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos, defenderPos, attackerPath, isGroove, grooveWeaponIdOverride)
+    if attacker.unitClass.isCommander or attacker.unitClass.isStructure or defender.unitClass.isCommander or defender.unitClass.isStructure then
+        solveType = "NoRng"
+    end
+    return Combat.originalGetDamage(OriginalCombat, attacker, defender, solveType, isCounter, attackerPos, defenderPos, attackerPath, isGroove, grooveWeaponIdOverride)
 end
 
 function Combat:solveDamage(weaponDamage, attackerEffectiveness, defenderEffectiveness, terrainDefenceBonus, randomValue, crit, multiplier)
@@ -38,7 +47,7 @@ function Combat:solveDamage(weaponDamage, attackerEffectiveness, defenderEffecti
     -- Multiply everything together for final damage (in percent space, not unit health space - still needs to be multiplied by 100)
     local averageDamage = attackerEffectiveness * averageOffence * defence * multiplier * crit
 
-    if averageDamage * randomDamagePercent < 0.05 then
+    if averageDamage * randomDamagePercent < 0.03 then
         damage = attackerEffectiveness * averageOffence * defence * multiplier * crit
         damage = damage + damage * randomPercent
     else

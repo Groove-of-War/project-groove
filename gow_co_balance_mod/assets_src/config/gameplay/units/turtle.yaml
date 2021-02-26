@@ -6,7 +6,6 @@ weapons:
     rangeMax: 1
     canMoveAndAttack: true
     baseDamage:
-      air: 1
       water: 1
     tagDamage:
 
