@@ -95,9 +95,15 @@ Contributors:
 - Reef terrain defense: 2 -> 3
 
 #### Damage Calculations:
-- Damage variance capped to +/- 10% of the median damage, or +/- 5 HP damage, whichever is lower
-    - e.g. for median damage 20, the range will now be 18-22 instead of 15-25
-    - However, for median damage 90, the range is 85-95, as before. (not +/- 9)
+- Damage variance capped to +/- 10% of the median damage, or +/- 3 HP damage, whichever is lower
+    - e.g. for median damage 20, the range will now be 18-22 instead of 17-23
+    - However, for median damage 90, the range is 87-93, as before. (not +/- 9)
+- All combat engagements involving a CO or structure will have RNG turned off
+    - e.g. A spear attacking a CO will have no RNG
+    - e.g. A CO attacking a spear will have no RNG
+    - e.g. A spear attacking any village/stronghold/barracks/crystal/structure will have no RNG
+    - e.g. An archer attacking a CO/structure will have no RNG
+    - e.g. A sword attacking a theif/sword/any unit will still have RNG
 
 #### Overhealing (NEW):
 - Certain abilities will now cause units to "overheal", i.e. go above 100% HP
