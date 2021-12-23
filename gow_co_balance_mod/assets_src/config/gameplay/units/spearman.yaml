@@ -1,0 +1,28 @@
+---
+
+weapons:
+  - id: spear
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+    tagDamage:
+      archer: 0.7
+      soldier: 0.75
+      villager: 0.75
+      spearman: 0.55
+      dog: 0.8
+      wagon: 0.45
+      knight: 0.7
+      trebuchet: 0.5
+      ballista: 0.55
+      giant: 0.10
+      merman: 0.75
+      mage: 0.65
+      structure: 0.5
+      commander: 0.10 #from 0.15
+      rifleman: 0.85
+      thief: 0.75
+
+...

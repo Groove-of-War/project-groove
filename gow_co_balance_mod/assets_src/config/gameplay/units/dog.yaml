@@ -1,0 +1,30 @@
+
+---
+
+weapons:
+  - id: bite
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+    tagDamage:
+      archer: 0.75
+      soldier: 0.75
+      villager: 0.75
+      spearman: 0.45
+      dog: 0.65
+      wagon: 0.3
+      knight: 0.1
+      trebuchet: 0.35
+      ballista: 0.4
+      giant: 0.05
+      dragon: 100 #goodboy
+      merman: 0.75
+      mage: 0.55
+      structure: 0.2
+      commander: 0.10 #from 0.15
+      rifleman: 1.1
+      thief: 0.85
+
+...

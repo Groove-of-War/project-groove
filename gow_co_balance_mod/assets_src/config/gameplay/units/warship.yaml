@@ -21,7 +21,7 @@ weapons:
       mage: 0.8
       structure: 0.75
       giant: 0.55
-      commander: 0.25
+      commander: 0.20 #from .25
       rifleman: 1.1
       thief: 1.0
 

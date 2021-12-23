@@ -1,19 +1,15 @@
 local Wargroove = require "wargroove/wargroove"
 local Verb = require "wargroove/verb"
 local OldSpellHex = require "verbs/spell_hex"
-local ManaUtils = require "mana/mana_utils"
 
 local SpellHex = Verb:new()
-local spellCost = 1
+local spellCost = 300
 local spellDamage = 10
 local costScoreFactor = 0.5
 local effectRange = 4
 
 function SpellHex:init()
     OldSpellHex.execute = SpellHex.execute
-    OldSpellHex.canExecuteAnywhere = SpellHex.canExecuteAnywhere
-    OldSpellHex.spellCost = SpellHex.spellCost
-    OldSpellHex.getCostAt = SpellHex.getCostAt
 end
 
 function SpellHex:getMaximumRange(unit, endPos)
@@ -27,7 +23,7 @@ end
 
 
 function SpellHex:canExecuteAnywhere(unit)
-    return ManaUtils:manaCount(unit.playerId) >= spellCost
+    return Wargroove.getMoney(unit.playerId) >= spellCost
 end
 
 
@@ -37,7 +33,7 @@ end
 
 
 function SpellHex:execute(unit, targetPos, strParam, path)
-    ManaUtils:consumeMana(unit.playerId)
+    Wargroove.changeMoney(unit.playerId, -spellCost)
     local targets = Wargroove.getTargetsInRange(targetPos, effectRange, "unit")
 
     local function distFromTarget(a)
@@ -54,8 +50,13 @@ function SpellHex:execute(unit, targetPos, strParam, path)
         local u = Wargroove.getUnitAt(pos)
         if u ~= nil then
             local uc = u.unitClass
-            if Wargroove.areEnemies(u.playerId, unit.playerId) and (not uc.isStructure) then
+            local lastHexedTurn = tonumber(Wargroove.getUnitState(u, "lastHexedTurn"))
+            local lastHexedPlayer = tonumber(Wargroove.getUnitState(u, "lastHexedPlayer"))
+            local neverHexed = lastHexedTurn == nil or lastHexedPlayer == nil
+            if Wargroove.areEnemies(u.playerId, unit.playerId) and (not uc.isStructure) and (neverHexed or (lastHexedTurn < Wargroove.getTurnNumber() or lastHexedPlayer ~= Wargroove.getCurrentPlayerId())) then
                 u:setHealth(u.health - spellDamage, unit.id)
+                Wargroove.setUnitState(u, "lastHexedTurn", Wargroove.getTurnNumber())
+                Wargroove.setUnitState(u, "lastHexedPlayer", Wargroove.getCurrentPlayerId())
                 Wargroove.updateUnit(u)
                 Wargroove.spawnMapAnimation(pos, 0, "fx/hex_spell_hit")
                 Wargroove.playMapSound("darkmercia/darkmerciaGrooveUnitDrained", pos)

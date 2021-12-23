@@ -1,5 +1,23 @@
 ---
 
+unitClasses:
+  - id: harpy
+    name: unit_class_name_harpy
+    cost: 600
+    movement: hovering
+    moveRange: 5
+    damageMultiplier: 1.0
+    aiPriority: 1.0
+    weapons:
+      - id: harpyClaws
+    tags:
+      - harpy
+      - type.air
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 5
+    canSeeOverTerrain: true
+
 weapons:
   - id: harpyClaws
     rangeMin: 1
@@ -13,7 +31,7 @@ weapons:
       archer: 0.75
       soldier: 0.65
       villager: 0.65
-      spearman: 0.50
+      spearman: 0.50 # from 0.45
       dog: 0.55
       wagon: 0.35
       knight: 0.75
@@ -26,7 +44,7 @@ weapons:
       harpy: 0.55
       structure: 0.5
       giant: 0.10
-      commander: 0.15
+      commander: 0.10 #from .15
       rifleman: 0.75
       thief: 0.65
 

@@ -1,4 +1,0 @@
-modifyingUnitClasses:
-  - id: hq
-    replace:
-      loadCapacity: 1

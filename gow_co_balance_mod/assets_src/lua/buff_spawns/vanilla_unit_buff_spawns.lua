@@ -7,30 +7,6 @@ function BuffSpawns.crystal(Wargroove, unit)
     Wargroove.displayBuffVisualEffect(unit.id, unit.playerId, "units/commanders/emeric/crystal_aura", "spawn", 0.3, effectPositions)
 end
 
-function BuffSpawns.smoke_producer(Wargroove, unit)
-  local posString = Wargroove.getUnitState(unit, "pos")
-  
-  local vals = {}
-  for val in posString.gmatch(posString, "([^"..",".."]+)") do
-      vals[#vals+1] = val
-  end
-  local center = { x = tonumber(vals[1]), y = tonumber(vals[2])}
-  local radius = 1
-
-  local effectPositions = Wargroove.getTargetsInRange(center, radius, "all")
-  local effectName = "units/commanders/twins/area_damage"
-
-  Wargroove.displayBuffVisualEffectAtPosition(unit.id, center, unit.playerId, "units/commanders/twins/smoke_back", "spawn", 0.6, effectPositions, "units", {x = 0, y = 0})
-  
-  if (radius > 0) then
-        local firePositions = Wargroove.getTargetsInRange(center, radius, "all")
-        for i, pos in ipairs(firePositions) do
-            Wargroove.displayBuffVisualEffectAtPosition(unit.id, pos, unit.playerId, "units/commanders/vesper/smoke_back", "spawn", 0.6, effectPositions, "units", {x = 0, y = 0})
-            Wargroove.displayBuffVisualEffectAtPosition(unit.id, pos, unit.playerId, "units/commanders/vesper/smoke_front", "spawn", 0.8, effectPositions, "units", {x = 0, y = 2})
-        end
-    end
-end
-
 function BuffSpawns.area_heal(Wargroove, unit)
     local posString = Wargroove.getUnitState(unit, "pos")
     

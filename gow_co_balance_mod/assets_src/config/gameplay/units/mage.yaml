@@ -29,7 +29,7 @@ weapons:
       structure: 0.35
       balloon: 1.0
       giant: 0.20
-      commander: 0.2
+      commander: 0.15 #from .20
       thief: 0.85
       rifleman: 0.95
 

@@ -251,7 +251,7 @@ verbs:
     name: groove_name_smoke_screen
     scriptName: verbs/groove_smoke_screen
     splashOutlineColour: heal_outline
-    splashRadius: 1
+    splashRadius: 2
     targetColour: target
     targetOutlineColour: target_outline
     targetted: true

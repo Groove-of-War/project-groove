@@ -1,0 +1,36 @@
+---
+
+weapons:
+  - id: sigridAttack
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+    tagDamage:
+      archer: 1.05
+      soldier: 0.90
+      villager: 0.95
+      spearman: 0.55
+      dog: 1.0
+      wagon: 0.55
+      knight: 0.45
+      trebuchet: 0.45
+      ballista: 0.5
+      mage: 0.65
+      giant: 0.3
+      structure: 0.7
+      balloon: 0.55
+      harpy: 0.9
+      witch: 0.7
+      dragon: 0.35
+      commander: 0.3
+      rifleman: 1.05
+      thief: 0.95
+
+      warship: 0.55
+      harpoonship: 0.45
+      turtle: 0.55
+      travelboat: 0.6
+      merman: 0.95
+...

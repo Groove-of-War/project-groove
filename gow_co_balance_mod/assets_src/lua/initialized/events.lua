@@ -171,8 +171,6 @@ function Events.populateTriggerList()
     -- add my triggers here
     Events.addTriggerToList(Triggers.getCommanderOverhealResetTrigger(referenceTrigger))
     Events.addTriggerToList(Triggers.getOverhealTrigger(referenceTrigger))
-    Events.addTriggerToList(Triggers.getManaInit(referenceTrigger))
-    Events.addTriggerToList(Triggers.getManaCount(referenceTrigger))
     
     local Actions = require("triggers/actions")
     local Conditions = require("triggers/conditions")

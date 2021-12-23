@@ -1,35 +1,16 @@
 local Wargroove = require "wargroove/wargroove"
 local Verb = require "wargroove/verb"
 local OldSpellHeal = require "verbs/spell_heal"
-local ManaUtils = require "mana/mana_utils"
 
 local SpellHeal = Verb:new()
 
 function SpellHeal:init()
 	OldSpellHeal.execute = SpellHeal.execute
-    OldSpellHeal.canExecuteAnywhere = SpellHeal.canExecuteAnywhere
-    OldSpellHeal.spellCost = SpellHeal.spellCost
-    OldSpellHeal.getCostAt = SpellHeal.getCostAt
 end
 
-local spellCost = 1
+local spellCost = 300
 local healAmount = 20
 local costScoreFactor = 0.5
-
-
-function SpellHeal:getMaximumRange(unit, endPos)
-    return 2
-end
-
-
-function SpellHeal:getTargetType()
-    return "all"
-end
-
-
-function SpellHeal:canExecuteAnywhere(unit)
-    return ManaUtils:manaCount(unit.playerId) >= spellCost
-end
 
 
 function SpellHeal:getCostAt(unit, endPos, targetPos)
@@ -38,7 +19,7 @@ end
 
 
 function SpellHeal:execute(unit, targetPos, strParam, path)
-    ManaUtils:consumeMana(unit.playerId)
+    Wargroove.changeMoney(unit.playerId, -spellCost)
     local targets = Wargroove.getTargetsInRange(targetPos, 1, "unit")
 
     local function distFromTarget(a)
@@ -54,11 +35,16 @@ function SpellHeal:execute(unit, targetPos, strParam, path)
         local u = Wargroove.getUnitAt(pos)
         if u ~= nil then
             local uc = u.unitClass
-            if Wargroove.areAllies(u.playerId, unit.playerId) and (not uc.isStructure) then
+            local lastHealedTurn = tonumber(Wargroove.getUnitState(u, "lastHealedTurn"))
+            local lastHealedPlayer = tonumber(Wargroove.getUnitState(u, "lastHealedPlayer"))
+            local neverHealed = lastHealedTurn == nil or lastHealedPlayer == nil
+            if Wargroove.areAllies(u.playerId, unit.playerId) and (not uc.isStructure) and (neverHealed or (lastHealedTurn < Wargroove.getTurnNumber() or lastHealedPlayer ~= Wargroove.getCurrentPlayerId())) then
                 Wargroove.playMapSound("unitHealed", pos)
 				--Only heals when below 100 hp to prevent removing Overheal
 				if u.health < 100 then
 					u:setHealth(u.health + healAmount, unit.id)
+                    Wargroove.setUnitState(u, "lastHealedTurn", Wargroove.getTurnNumber())
+                    Wargroove.setUnitState(u, "lastHealedPlayer", Wargroove.getCurrentPlayerId())
 				end
                 Wargroove.updateUnit(u)
                 Wargroove.spawnMapAnimation(pos, 0, "fx/heal_unit")

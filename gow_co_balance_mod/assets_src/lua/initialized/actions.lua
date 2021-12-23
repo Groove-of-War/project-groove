@@ -1,6 +1,5 @@
 local Events = require "initialized/events"
 local Wargroove = require "wargroove/wargroove"
-local ManaUtils = require "mana/mana_utils"
 
 local inspect = require "inspect"
 
@@ -12,16 +11,8 @@ end
 
 function Actions.populate(dst)
     dst["overheal_state_update"] = Actions.overhealStateUpdate
-    dst["mana_init"] = ManaUtils.init
-    dst["mana_count"] = Actions.manaCountUpdateAll
 end
 
--- A slight hack to get this function to work properly, I would normally put this under mana_utils.lua
-function Actions.manaCountUpdateAll(context)
-    for playerId = 0, 7 do
-        ManaUtils:manaCount(playerId)
-    end
-end
 
 function Actions.overhealStateUpdate(context)
     print('==Actions.overhealStateUpdate')

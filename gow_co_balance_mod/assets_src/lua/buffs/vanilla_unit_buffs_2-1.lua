@@ -45,7 +45,7 @@ function Buffs.smoke_producer(Wargroove, unit)
     end
     local center = { x = tonumber(vals[1]), y = tonumber(vals[2])}
 
-    local radius = 1 -- edited to 1 in 0.7beta.3
+    local radius = 2 -- edited to 1 in 0.7beta.3
     
     if (not Wargroove.isSimulating()) then
         local effectPositions = Wargroove.getTargetsInRange(center, radius, "all")

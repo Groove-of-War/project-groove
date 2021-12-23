@@ -10,3 +10,4 @@ scratch/
 *.iml
 wargroove-mod-packer.exe
 packmod.sh
+.idea

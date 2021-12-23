@@ -1,0 +1,34 @@
+---
+
+weapons:
+  - id: bident
+    rangeMin: 1
+    rangeMax: 2
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 0.35
+      soldier: 0.35
+      villager: 0.35
+      spearman: 0.25
+      dog: 0.45
+      wagon: 0.35
+      knight: 0.15
+      trebuchet: 0.20
+      mage: 0.45
+      structure: 0.15
+      commander: 0.1
+      ballista: 0.25
+      giant: 0.05
+      rifleman: 0.45
+      thief: 0.35
+
+      warship: 0.05
+      harpoonship: 0.3
+      travelboat: 0.1
+      turtle: 0.1     
+      merman: 0.2 #from 0.25
+
+...

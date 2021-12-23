@@ -21,7 +21,7 @@ weapons:
       mage: 0.9
       structure: 0.65 #from .85
       giant: 0.55
-      commander: 0.25
+      commander: 0.20 #from .30
       warship: 0.75
       harpoonship: 0.65
       turtle: 0.45

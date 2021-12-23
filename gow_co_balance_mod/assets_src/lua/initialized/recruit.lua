@@ -1,7 +1,6 @@
 local Wargroove = require "wargroove/wargroove"
 local Verb = require "wargroove/verb"
 local OldRecruit = require "verbs/recruit"
-local ManaUtils = require "mana/mana_utils"
 
 local Recruit = Verb:new()
 
@@ -37,7 +36,7 @@ function Recruit:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     end
 
     -- Check if this player can recruit this type of unit
-    if (not Wargroove.canPlayerRecruit(unit.playerId, strParam)) or (not ManaUtils:isManaRecruitable(unit.playerId, strParam)) then
+    if (not Wargroove.canPlayerRecruit(unit.playerId, strParam)) then
         return false
     end
 
@@ -48,9 +47,6 @@ end
 
 function Recruit:execute(unit, targetPos, strParam, path)
     local uc = Wargroove.getUnitClass(strParam)
-    if ManaUtils:isManaUnit(unit.playerId, strParam) then
-        ManaUtils:consumeMana(unit.playerId)
-    end
     Wargroove.changeMoney(unit.playerId, -uc.cost)
     Wargroove.spawnUnit(unit.playerId, targetPos, strParam, true)
     if Wargroove.canCurrentlySeeTile(targetPos) then

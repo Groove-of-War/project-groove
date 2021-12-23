@@ -23,19 +23,7 @@ grooves:
       attack: 20
       counter: 10
       kill: 30
-    verb: groove_second_wind  
-
-  - id: convert   #elodie
-    name: groove_name_convert
-    description: groove_description_convert
-    maxCharge: 150
-    chargePerUse: 150
-    chargeBy:
-      endOfTurn: 10
-      attack: 20
-      counter: 10
-      kill: 30
-    verb: groove_convert
+    verb: groove_second_wind
 
   - id: dual_bombs   #twins will use fire first, then get water for free
     name: groove_name_dual_bombs
@@ -73,10 +61,15 @@ grooves:
       kill: 30
     verb: groove_diplomacy
 
-  - id: indicate_mana   # mana amount indicator
-    name: groove_name_indicate_mana
-    description: groove_description_indicate_mana
+  - id: teleport_beam   # Teleport beam is now fast
+    name: groove_name_teleport_beam
+    description: groove_description_teleport_beam
     maxCharge: 100
-    chargePerUse: 0
-    verb: groove_empty
+    chargePerUse: 100
+    chargeBy:
+      endOfTurn: 10
+      attack: 20
+      counter: 10
+      kill: 30
+    verb: groove_teleport_beam
 ...

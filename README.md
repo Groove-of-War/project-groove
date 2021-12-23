@@ -52,6 +52,26 @@ Contributors:
         - smoke AoE range 2 -> 1
 
 ### Units:
+- All
+    - Average damage against commanders has been reduced by 5 with the following exceptions:
+        - Swords 15->12
+        - Archers 10 (No change)
+        - Ballista 15->12
+        - Golems 40->30
+        - Rifle 10 (No change)
+        - Other commanders 45->35
+- Commanders average damage
+    - Swords: 120->95
+    - Dogs: 120->105
+    - Spears: 80->60
+    - Wagons: 75->60
+    - Mages: 85->70
+    - Archers: 135->110
+    - Knights: 60->50
+    - Ballista: 65->55
+    - Trebuchet: 60->50
+    - Golems: 45->35
+    - Commander: 45->35
 - Giant
     - movement type: walking -> riding (what knights use)
 - Harpy
@@ -107,18 +127,6 @@ Contributors:
     - units will retain overhealed HP indefinitely
     - damage scales with overhealed HP like normal
     - defense does NOT scale with overhealed HP
-    
-#### Mana (NEW RESOURCE):
-- Mage heal and Witch hex now cost 1 mana instead of 300 gold
-- Recruiting a golem, mage, dragon or witch now costs 1 mana in addition to the gold cost
-- New structure: Mana Crystal:
-    - Can be captured, and neutralized
-    - Cannot reinforce
-    - Adds 1 mana to the owner's pool
-    - When consumed, it's turn is spent
-    - All mana is restored at the start of the player's turn
-- A crystal indicator will now display your total mana on your HQ
-- All villagers are transformed into mana crystals at the start of the first turn
 
 
 ## Implementation Notes
