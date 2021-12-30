@@ -72,6 +72,7 @@ Contributors:
     - Trebuchet: 60->50
     - Golems: 45->35
     - Commander: 45->35
+    - Structures: 75->50
 - Giant
     - movement type: walking -> riding (what knights use)
 - Harpy
@@ -115,14 +116,18 @@ Contributors:
 - Reef terrain defense: 2 -> 3
 
 #### Damage Calculations:
-- Damage variance capped to +/- 10% of the median damage, or +/- 3 HP damage, whichever is lower
-    - e.g. for median damage 20, the range will now be 18-22 instead of 17-23
-    - However, for median damage 90, the range is 87-93, as before. (not +/- 9)
-- All combat engagements involving a CO or structure will have RNG turned off
-    - e.g. A spear attacking a CO will have no RNG
-    - e.g. A CO attacking a spear will have no RNG
+- Damage variance capped to + 7% of the average damage depending on terrain defence
+    - river: 0-7%
+    - beach: 0-6%
+    - road: 0-5%
+    - plains: 0-4%
+    - flagstone: 0-3%
+    - forest: 0-2%
+    - mountain: 0-1%
+    - e.g. for median damage 20, the range will now be 20-22 on forest terrain instead of 17-23
+- All combat engagements involving a structure will have RNG turned off
     - e.g. A spear attacking any village/stronghold/barracks/crystal/structure will have no RNG
-    - e.g. An archer attacking a CO/structure will have no RNG
+    - e.g. An archer attacking a structure will have no RNG
     - e.g. A sword attacking a theif/sword/any unit will still have RNG
 
 #### Overhealing (NEW):

@@ -19,7 +19,7 @@ weapons:
       ballista: 0.5
       mage: 0.65
       giant: 0.3
-      structure: 0.7
+      structure: 0.45
       balloon: 0.55
       harpy: 0.9
       witch: 0.7
