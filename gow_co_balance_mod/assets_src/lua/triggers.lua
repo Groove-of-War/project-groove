@@ -14,8 +14,7 @@ function Triggers.getCommanderOverhealResetTrigger(referenceTrigger)
 
     table.insert(trigger.conditions, { id = "player_turn", parameters = { "current" } })
     table.insert(trigger.conditions, { id = "start_of_turn", parameters = { } })
-    table.insert(trigger.conditions, { id = "unit_health", parameters = { "current", 2, 0,  "*commander", -1, 2, 100}  })
-    table.insert(trigger.actions, { id = "modify_health", parameters = { "*commander", -1, "current",  0, 100}  })
+    table.insert(trigger.actions, { id = "overheal_unit_reset", parameters = { "current" }  })
 
     return trigger
 end

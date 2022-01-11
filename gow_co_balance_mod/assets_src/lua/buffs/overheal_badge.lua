@@ -62,9 +62,9 @@ OverhealBadge["unitClasses"] = {
 }
 
 function OverhealBadge.createFunction()
-    local overhealAnimation = "ui/icons/overheal"
 
     local function OverhealBadgeFunction(Wargroove, unit)
+        local overhealAnimation = "ui/icons/overheal"
         if Wargroove.isSimulating() then
             return
         end
