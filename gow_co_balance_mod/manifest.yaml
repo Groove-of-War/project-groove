@@ -1,7 +1,7 @@
 ---
 
 id: ProjectGrooveLatest                   # The mod's id. This should not change over the lifetime of the mod.
-name: "Project Groove 1.0"                # The mod's name. This is looked up in the language string yaml configuration.
+name: "Project Groove 1.1"                # The mod's name. This is looked up in the language string yaml configuration.
 author: "CMAvelis, Fly Sniper, BarrettRTS"
 description: "Balance and enhancements for post-2.1 competitive play" # The mod's description. This is looked up in the language string yaml configuration.
 
