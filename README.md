@@ -21,8 +21,6 @@ Contributors:
         - damage: 30 -> 25
         - can **overheal** (see Game Mechanics) to a maximum of 200 HP, which lasts until the start of your next turn
             - see Game Mechanics for information on Overhealing
-- Elodie 
-    - charge speed: slow -> medium
 - Errol & Orla
     - groove mechanics:
         - both grooves may be used once groove is charged, instead of one or the other
@@ -46,10 +44,6 @@ Contributors:
     - damage floor set to 0
 - Sigrid
     - 2-range teleport added to groove prior to targeting enemy
-- Vesper
-    - groove change:
-        - Vesper now teleports to the targeted location
-        - smoke AoE range 2 -> 1
 
 ### Units:
 - All
